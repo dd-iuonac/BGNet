@@ -1,0 +1,14 @@
+imageio==2.15.0
+networkx==2.6.3
+numpy==1.22.2
+opencv-python==4.5.5.62
+packaging==21.3
+Pillow==9.0.1
+pyparsing==3.0.7
+PyWavelets==1.2.0
+scikit-image==0.19.1
+scipy==1.8.0
+tifffile==2022.2.9
+torch==1.7.1
+torchvision==0.8.2
+typing-extensions==4.0.1
