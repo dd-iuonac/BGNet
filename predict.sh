@@ -13,8 +13,8 @@
                   # --resume './models/kitti_12_BGNet_Plus.pth'
 python predict.py --dataset 'kitti' \
                   --model 'bgnet_plus' \
-                  --datapath '/data/home/user_name/dataset/dataset/kitti/' \
-                  --testlist './filenames/KITTI-15-Test.txt' \
+                  --datapath '/home/daniel/Datasets/Kitti2015/' \
+                  --testlist './filenames/kitti15_test.txt' \
                   --savepath './kitti-15-BGNet-Plus/' \
                   --resume './models/kitti_15_BGNet_Plus.pth'
 #python predict.py --dataset 'kitti' \

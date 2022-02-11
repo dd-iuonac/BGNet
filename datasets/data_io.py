@@ -3,48 +3,47 @@
 # Official code of our paper:Bilateral Grid Learning for Stereo Matching Network
 # Written by Bin Xu
 # ---------------------------------------------------------------------------
-import torch 
+import torch
 import numpy as np
 import re
 import torchvision.transforms as transforms
 
-def mean_std_transform(img,flag):
 
+def mean_std_transform(img, flag):
     size = np.shape(img)
     height = size[0]
     width = size[1]
     temp_data = np.zeros([3, height, width], 'float32')
-    
-    img = np.ascontiguousarray(img)
-    r = img[:, :, 0]/255.0
-    g = img[:, :, 1]/255.0
-    b = img[:, :, 2]/255.0
-    
 
-    if(flag ==1):
-        temp_data[0, :, :] = (r - 0.353720247746) 
-        temp_data[1, :, :] = (g - 0.384273201227) 
-        temp_data[2, :, :] = (b - 0.405834376812) 
+    img = np.ascontiguousarray(img)
+    r = img[:, :, 0] / 255.0
+    g = img[:, :, 1] / 255.0
+    b = img[:, :, 2] / 255.0
+
+    if flag == 1:
+        temp_data[0, :, :] = (r - 0.353720247746)
+        temp_data[1, :, :] = (g - 0.384273201227)
+        temp_data[2, :, :] = (b - 0.405834376812)
     else:
-        temp_data[0, :, :] = (r - 0.353581100702) 
-        temp_data[1, :, :] = (g - 0.384512037039) 
-        temp_data[2, :, :] = (b - 0.406228214502) 
-    
-    
+        temp_data[0, :, :] = (r - 0.353581100702)
+        temp_data[1, :, :] = (g - 0.384512037039)
+        temp_data[2, :, :] = (b - 0.406228214502)
+
     img = temp_data[0: 3, :, :]
-    #img = np.expand_dims(img, 0)
+    # img = np.expand_dims(img, 0)
     img = torch.from_numpy(img)
     return img
+
 
 __imagenet_stats = {'mean': [0.485, 0.456, 0.406],
                     'std': [0.229, 0.224, 0.225]}
 
-def get_transform():
 
+def get_transform():
     normalize = __imagenet_stats
     t_list = [
         transforms.ToTensor(),
-        #transforms.Normalize(**normalize),
+        # transforms.Normalize(**normalize),
     ]
 
     return transforms.Compose(t_list)
